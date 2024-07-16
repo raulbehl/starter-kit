@@ -33,6 +33,11 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
 					'text-white bg-transparent hover:bg-white hover:text-black dark:bg-neutral-900 dark:text-white';
 				break;
 
+			case 'quicksilicon-button':
+				buttonClassName =
+					'text-white bg-[#7aaedb] hover:bg-[#1c1c1c] border-[#7aaedb] dark:bg-[#7aaedb] dark:text-white';
+				break;
+
 			default:
 				buttonClassName =
 					'text-white bg-primary-600 hover:bg-primary-500 border-primary-600 dark:bg-primary-600 dark:text-white';

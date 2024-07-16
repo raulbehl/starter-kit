@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
-import { SocialLinks } from './social-links';
 
 export const Footer = () => {
 	const { publication } = useAppContext();
+	const domain = 'https://quicksilicon.in';
 	const PUBLICATION_LOGO = publication.preferences.logo;
 	return (
-		<footer className="border-t py-20 dark:border-neutral-800 ">
+		<footer className="border-t py-20 dark:border-neutral-800 bg-[#1c1c1c]">
 			<Container className="px-5">
 				{PUBLICATION_LOGO ? (
 					<div className="mb-20 flex w-full flex-row justify-center">
@@ -16,7 +16,7 @@ export const Footer = () => {
 							aria-label={`${publication.title} home page`}
 							className="flex flex-row items-center gap-5"
 						>
-							<img className="block w-40" src={PUBLICATION_LOGO} alt={publication.title} />
+							<img className="block w-20" src={PUBLICATION_LOGO} alt={publication.title} />
 						</Link>
 					</div>
 				) : (
@@ -27,120 +27,81 @@ export const Footer = () => {
 				<div className="grid w-full grid-cols-3 gap-5 md:grid-cols-6 lg:grid-cols-5">
 					<div className="col-span-1 grid grid-cols-4 gap-5 md:col-span-4 lg:col-span-3">
 						<div className="col-span-full md:col-span-2 lg:col-span-1">
-							<p className="mb-2 font-semibold text-slate-600 dark:text-neutral-200">
-								Stay in touch
+							<p className="mb-2 font-black text-white dark:text-neutral-200">
+								About
 							</p>
-							<ul className="flex flex-col gap-1 text-slate-700 dark:text-neutral-300">
+							<ul className="flex flex-col gap-1 text-white dark:text-neutral-300">
 								<li>
-									<a href="#" className="hover:underline">
-										Contact us
+									<a href={domain + '/legal'} className="hover:underline" target='_blank'>
+										Legal
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Book a demo
+									<a href={domain + '/referral'} className="hover:underline" target='_blank'>
+										Referral Policy
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Newsletter
+									<a href={domain + '/privacy'} className="hover:underline" target='_blank'>
+										Privacy
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Slack
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div className="col-span-full md:col-span-2 lg:col-span-1">
-							<p className="mb-2 font-semibold text-slate-600 dark:text-neutral-200">Resources</p>
-							<ul className="flex flex-col gap-1 text-slate-700 dark:text-neutral-300">
-								<li>
-									<a href="#" className="hover:underline">
-										Community
+									<a href="mailto:info@quicksilicon.in" className="hover:underline" target='_blank'>
+										Contact Us
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Use Cases
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:underline">
-										Source Code
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:underline">
-										Blog
+									<a href={domain + '/refund'} className="hover:underline" target='_blank'>
+										Cancellation and Refund
 									</a>
 								</li>
 							</ul>
 						</div>
 						<div className="col-span-full md:col-span-2 lg:col-span-1">
-							<p className="mb-2 font-semibold text-slate-600 dark:text-neutral-200">Product</p>
-							<ul className="flex flex-col gap-1 text-slate-700 dark:text-neutral-300">
+							<p className="mb-2 font-black text-white dark:text-neutral-200">Reach us at</p>
+							<ul className="flex flex-col gap-1 text-white dark:text-neutral-300">
 								<li>
-									<a href="#" className="hover:underline">
-										Pricing
+									<a href="https://www.linkedin.com/company/quicksilicon" className="hover:underline" target='_blank'>
+										LinkedIn
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Documentation
+									<a href="https://www.instagram.com/quicksilicon" className="hover:underline" target='_blank'>
+										Instagram
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Integrations
+									<a href="https://twitter.com/quicksilicon" className="hover:underline" target='_blank'>
+										Twitter
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Support
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div className="col-span-1">
-							<p className="mb-2 font-semibold text-slate-600 dark:text-neutral-200">Other links</p>
-							<ul className="flex flex-col gap-1 text-slate-700 dark:text-neutral-300">
-								<li>
-									<a href="#" className="hover:underline">
-										Events
+									<a href="https://www.facebook.com/quicksilicon" className="hover:underline" target='_blank'>
+										Facebook
 									</a>
 								</li>
 								<li>
-									<a href="#" className="hover:underline">
-										Careers
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:underline">
-										Newsroom
-									</a>
-								</li>
-								<li>
-									<a href="#" className="hover:underline">
-										About us
+									<a href="mailto:info@quicksilicon.in" className="hover:underline" target='_blank'>
+										Gmail
 									</a>
 								</li>
 							</ul>
 						</div>
-					</div>
-					<div className="col-span-2 flex flex-col items-end gap-5 text-right text-slate-600 dark:text-neutral-300 md:text-left">
-						<SocialLinks />
-						<p>&copy; 2023 Company Inc.</p>
-						<p>
-							<a href="#" className="hover:underline">
-								Privacy Policy
-							</a>{' '}
-							·{' '}
-							<a href="#" className="hover:underline">
-								Terms
-							</a>
-						</p>
+						<div className="col-span-full md:col-span-2 lg:col-span-2">
+							<p className="mb-2 font-black text-white dark:text-neutral-200">QuickSilicon</p>
+							<ul className="flex flex-col gap-1 text-white dark:text-neutral-300">
+								<li>
+									<address>
+										<u>Registered Office</u>
+										<br/>Shop No. 56 Block P NIT 5 Faridabad, Haryana - 121001
+										<br/>CIN: U72900HR2021PTC094537
+										<br/>Email Id: info@quicksilicon.in
+										<br/>Telephone No: +91-9923278283
+									</address>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</Container>
