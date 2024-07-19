@@ -2,6 +2,7 @@ import { resizeImage } from '@starter-kit/utils/image';
 import Link from 'next/link';
 import { useAppContext } from './contexts/appContext';
 import { PublicationFragment } from '../generated/graphql';
+import { useRouter } from 'next/router';
 
 const getPublicationLogo = (publication: PublicationFragment, isSidebar?: boolean) => {
 	if (isSidebar) {
@@ -13,6 +14,8 @@ const getPublicationLogo = (publication: PublicationFragment, isSidebar?: boolea
 export const PublicationLogo = ({ isSidebar }: { isSidebar?: boolean }) => {
 	const { publication } = useAppContext();
 	const PUBLICATION_LOGO = getPublicationLogo(publication, isSidebar);
+	const router = useRouter();
+	const currentPath = router.pathname;
 
 	return (
 		<h1 className="relative w-full">
@@ -28,7 +31,9 @@ export const PublicationLogo = ({ isSidebar }: { isSidebar?: boolean }) => {
 							alt={publication.title}
 							src={resizeImage(PUBLICATION_LOGO, { w: 320, h: 80 })}
 						/>
-						<span className="text-2xl font-semibold text-white md:text-3xl">Blog</span>
+						<span className="text-2xl font-semibold text-white md:text-3xl">
+							{currentPath === '/glossary' ? 'Glossary' : 'Blog'}
+						</span>
 					</>
 				) : (
 					<span
