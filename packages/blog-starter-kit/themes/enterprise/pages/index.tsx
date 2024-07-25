@@ -189,12 +189,15 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-	const data = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
-		GQL_ENDPOINT,
+	const data = await request<PostsByPublicationQuery, any>(
+		GQL_ENDPOINT,	
 		PostsByPublicationDocument,
 		{
 			first: 10,
 			host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
+			filter: {
+				tagSlugs: ["qsblog"],
+			},
 		},
 	);
 

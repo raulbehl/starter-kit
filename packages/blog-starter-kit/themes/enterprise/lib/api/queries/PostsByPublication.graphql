@@ -1,7 +1,7 @@
-query PostsByPublication($host: String!, $first: Int!, $after: String) {
+query PostsByPublication($host: String!, $first: Int!, $after: String, $filter: PublicationPostConnectionFilter) {
 	publication(host: $host) {
 		...Publication
-		posts(first: $first, after: $after) {
+		posts(first: $first, after: $after, filter: $filter) {
 			totalDocuments
 			edges {
 				node {

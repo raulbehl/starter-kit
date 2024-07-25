@@ -104,10 +104,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   let publication: PublicationFragment | null = null;
 
   while (hasNextPage) {
-    const variables: PostsByPublicationQueryVariables = {
+    const variables :any = {
       first: 50,
       host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
       after: endCursor,
+      filter: {
+        tagSlugs: ["qsglossary"],
+      },
     };
 
     const data = await request<PostsByPublicationQuery>(GQL_ENDPOINT, PostsByPublicationDocument, variables);
@@ -119,7 +122,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     publication = data.publication;
     const newPosts = data.publication.posts.edges.map((edge) => edge.node);
     allPosts.push(...newPosts);
-    console.log(allPosts);
     endCursor = data.publication.posts.pageInfo.endCursor;
     hasNextPage = data.publication.posts.pageInfo.hasNextPage || false;
   }

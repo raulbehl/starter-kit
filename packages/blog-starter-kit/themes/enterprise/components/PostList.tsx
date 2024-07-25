@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { PostFragment } from '../generated/graphql';
 
 type PostListProps = {
@@ -13,9 +14,7 @@ const PostList = ({ posts }: PostListProps) => {
     <ol className="space-y-2">
       {posts.map((post) => (
         <li key={post.id}>
-          <a href={`/${post.slug}`} className="text-[#7aaedb] hover:underline" target='_blank'>
-            {post.title}
-          </a>
+          <Link href={`/${post.slug}`} className="text-[#7aaedb] hover:underline">{post.title}</Link>
         </li>
       ))}
     </ol>
